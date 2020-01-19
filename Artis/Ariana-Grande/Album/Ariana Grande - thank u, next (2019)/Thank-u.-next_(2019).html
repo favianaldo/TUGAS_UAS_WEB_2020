@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>FM(Free Music)</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="../../../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">
+  <link href="../../../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="../../../../css/FM.min.css" rel="stylesheet">
+  
+  <!-- Data Table melalui CDN -->
+  <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+  <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+
+  <script type="text/javascript">    
+	var songs = ["01. imagine.mp3","02. needy.mp3","03. NASA.mp3","04. bloodline.mp3","05. fake smile.mp3","06. bad idea.mp3","07. make up.mp3","08. ghostin.mp3","09. in my head.mp3","10. 7 rings.mp3","11. thank u, next.mp3","12. break up with your girlfriend, i'm bored.mp3"];
+	
+	var song = new Audio();
+	var currentSong = 0;   
+	
+	window.onload = playSong;   
+	
+	function playSong(){
+		var songTitle = document.getElementById('songTitle');
+		var fillBar = document.getElementById('fill');
+		
+		songTitle.innerHTML = songs[currentSong];
+		
+		song.src = songs[currentSong];
+		
+		song.play();
+	}
+	
+	function playOrPauseSong(){
+		
+		if(song.paused){
+			song.play();
+			$("#play img").attr("src","../../../../pause1.png");
+		}
+		else{
+			song.pause();
+			$("#play img").attr("src","../../../../play1.png");
+		}
+	}
+	
+	song.addEventListener('ended', function(){
+		next();
+		$("#play img").attr("src","../../../../pause1.png");
+	});
+	
+	song.addEventListener('timeupdate',function(){ 
+		
+		var position = song.currentTime / song.duration;
+		
+		fill.style.width = position * 100 +'%';
+	});
+	
+
+	function next(){
+		
+		if(currentSong == songs.length-1){
+			currentSong = 0;
+		}
+		else{
+			currentSong++;
+		}
+		playSong();
+		$("#play img").attr("src","../../../../pause1.png");
+	}
+
+	function pre(){
+		
+		if(currentSong == 0){
+			currentSong = 11;
+		}
+		else{
+			currentSong--;
+		}
+		playSong();
+		$("#play img").attr("src","../../../../pause1.png");
+	}
+  </script>
+  
+</head>
+
+<body id="page-top">
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+    <a class="navbar-brand js-scroll-trigger" href="../../../../home.html#terbaru">
+      <span class="d-block d-lg-none">FREE MUSIC</span>
+	  <span class="d-none d-lg-block">
+        <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="../../../../img/profile.jpg" alt="">
+      </span>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	  <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="../../../../home.html#terbaru">Terbaru</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="#artis">Artis</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="#album">Album</a>
+        </li>
+		<li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="#video">Video</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="../../../../home.html#about">About</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  
+  <div class="container-fluid p-0">
+
+    <section class="FM-section p-3 p-lg-5 d-flex justify-content-center" id="artis">
+      <div class="w-100">
+        <h2 class="mb-5" align="center">ARTIS</h2>
+
+        <div class="FM-item d-flex flex-column flex-md-row justify-content-between mb-5">
+		  <div class="w-25">
+		  	<a href="../../Ariana-Grande.html">
+		  	<h4 class="mb-0" align="center">Ariana Grande</h4>
+			<span class="d-none d-lg-block" style="padding:10px">
+        	  <center><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="../../../../img/Artis/Ariana-Grande/Profil.jpg" alt="Ariana Grande"></center>
+      		</span>
+			</a>
+          </div>
+		  <div class="w-75 m-2">
+		  	<h5 class="m-3" align="left" style="font-size:24px">Details</h5>
+			<span class="d-none d-lg-block" style="padding:10px">
+			  	<p style="font-size:24px">Genres : R&B, Electropop, Pop, Dance Pop, Electro House<br>
+				  <a href="https://www.twitter.com/ArianaGrande">
+            		<i class="fab fa-twitter">@ArianaGrande</i>
+          		  </a>
+			  	</p>
+      		</span>
+          </div>
+        </div>
+	  
+	  </div>
+	</section>
+		
+	<hr class="m-0">
+		
+	<section class="FM-section p-3 p-lg-5 d-flex align-items-center" id="album">
+      <div class="w-100">
+        <h2 class="mb-5" align="center">ALBUM</h2>
+
+        <div class="FM-item d-flex flex-column flex-md-row justify-content-between mb-5">
+          <div class="w-25">
+		  	<h4 class="mb-0" align="center">thank u, next<br>(2019)</h4>
+			<span class="d-none d-lg-block" style="padding:10px">
+        	  <center><img class="img-fluid img-profile rounded mx-auto mb-2" src="../../../../img/Artis/Ariana-Grande/Album/thank-u.-next_(2019).jpg" alt="thank u, next (2019)"></center>
+      		</span>
+          </div>
+		  <div class="w-75">
+			<h4 id="songTitle"align="center"></h4>
+			<div id="player">
+			  <div id="buttons">
+				<button id="pre" onClick="pre()"><img src="../../../../previous1.png" height="70%" width="70%"/></button>
+                <button id="play" onClick="playOrPauseSong()"><img src="../../../../pause1.png"/></button>
+				<button id="next" onClick="next()"><img src="../../../../next1.png" height="70%" width="70%"/></button>
+			  </div>
+				
+			  <div id="seek-bar">
+				<div id="fill"></div>
+				<div id="handle"></div>
+			  </div>  
+		    </div>
+		  </div>
+		</div>	
+		
+      </div>
+    </section>
+	
+	<hr class="m-0">
+		
+	<section class="FM-section p-3 p-lg-5 d-flex align-items-center" id="video">
+      <div class="w-100">
+        <h2 class="mb-5" align="center">VIDEO</h2>
+
+        <div class="FM-item d-flex flex-column flex-md-row justify-content-between mb-5">
+          <div class="w-100">
+		  	<div id="playList">
+			  <table>
+				<tr>
+				  <td>
+				  	<p style="font-size:20px; text-align:center; padding:0px">01. imagine</p>
+				  	<iframe width="500" height="300" src="https://www.youtube.com/embed/7_rftpd0u0U" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id="player"></iframe>
+				  </td>
+				  <td>
+				  	<p style="font-size:20px; text-align:center; padding:0px">02. needy</p>
+				  	<iframe width="500" height="300" src="https://www.youtube.com/embed/ZaIUv-JBYs8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id="player"></iframe>
+				  </td>
+				</tr>
+
+				<tr>
+				  <td>
+				  	<p style="font-size:20px; text-align:center; padding:0px">03. NASA</p>
+				  	<iframe width="500" height="300" src="https://www.youtube.com/embed/-_aGvdfLTKY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id="player"></iframe>
+				  </td>
+				  <td>
+				  	<p style="font-size:20px; text-align:center; padding:0px">04. bloodline</p>
+				  	<iframe width="500" height="300" src="https://www.youtube.com/embed/uKqRAC-JNOM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id="player"></iframe>
+				  </td>
+				</tr>
+				
+				<tr>
+				  <td>
+				  	<p style="font-size:20px; text-align:center; padding:0px">05. fake smile</p>
+				  	<iframe width="500" height="300" src="https://www.youtube.com/embed/XTZigwkcJhw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id="player"></iframe>
+				  </td>
+				  <td>
+				  	<p style="font-size:20px; text-align:center; padding:0px">06. bad idea</p>
+				  	<iframe width="500" height="300" src="https://www.youtube.com/embed/ph_X7RFPfNA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id="player"></iframe>
+				  </td>
+				</tr>
+				
+				<tr>
+				  <td>
+				  	<p style="font-size:20px; text-align:center; padding:0px">07. make up</p>
+				  	<iframe width="500" height="300" src="https://www.youtube.com/embed/DOJremEQw88" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id="player"></iframe>
+				  </td>
+				  <td>
+				  	<p style="font-size:20px; text-align:center; padding:0px">08. ghostin</p>
+				  	<iframe width="500" height="300" src="https://www.youtube.com/embed/Z1pmpDRrQhU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id="player"></iframe>
+				  </td>
+				</tr>
+				
+				<tr>
+				  <td>
+				  	<p style="font-size:20px; text-align:center; padding:0px">09. in my head</p>
+				  	<iframe width="500" height="300" src="https://www.youtube.com/embed/6GcpNvYFMGE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id="player"></iframe>
+				  </td>
+				  <td>
+				  	<p style="font-size:20px; text-align:center; padding:0px">10. 7 rings</p>
+				  	<iframe width="500" height="300" src="https://www.youtube.com/embed/QYh6mYIJG2Y" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id="player"></iframe>
+				  </td>
+				</tr>
+				
+				<tr>
+				  <td>
+				  	<p style="font-size:20px; text-align:center; padding:0px">11. thank u, next</p>
+				  	<iframe width="500" height="300" src="https://www.youtube.com/embed/gl1aHhXnN1k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id="player"></iframe>
+				  </td>
+				  <td>
+				  	<p style="font-size:20px; text-align:center; padding:0px">12. break up with your girlfriend, i'm bored</p>
+				  	<iframe width="500" height="300" src="https://www.youtube.com/embed/LH4Y1ZUUx2g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id="player"></iframe>
+				  </td>
+				</tr>
+			  </table>
+
+			</div>
+		  </div>
+		</div>
+		
+		<div class="FM-item d-flex flex-column flex-md-row justify-content-between">
+		  <div class="d-flex justify-content-end w-100">
+		  	<a style="color:#2E67ED; font-size:16px" href="../../Ariana-Grande.html#album">Kembali <-</a>
+		  </div>
+	  	</div>
+		
+	  </div>
+	</section>
+
+  </div>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="../../../../vendor/jquery/jquery.min.js"></script>
+  <script src="../../../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="../../../../vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="../../../../js/FM.min.js"></script>
+
+</body>
+
+</html>

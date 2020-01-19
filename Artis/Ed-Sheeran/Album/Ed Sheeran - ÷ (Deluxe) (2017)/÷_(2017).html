@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>FM(Free Music)</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="../../../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">
+  <link href="../../../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="../../../../css/FM.min.css" rel="stylesheet">
+  
+  <!-- Data Table melalui CDN -->
+  <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+  <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+
+  <script type="text/javascript">    
+	var songs = ["01. Eraser.mp3","02. Castle on the Hill.mp3","03. Dive.mp3","04. Shape of You.mp3","05. Perfect.mp3","06. Galway Girl.mp3","07. Happier.mp3","08. New Man.mp3","09. Hearts Don't Break Around Here.mp3","10. What Do I Know.mp3","11. How Would You Feel (Paean).mp3","12. Supermarket Flowers.mp3","13. Barcelona.mp3","14. Bibia Be Ye Ye.mp3","15. Nancy Mulligan.mp3","16. Save Myself.mp3"];
+	
+	var song = new Audio();
+	var currentSong = 0;   
+	
+	window.onload = playSong;   
+	
+	function playSong(){
+		var songTitle = document.getElementById('songTitle');
+		var fillBar = document.getElementById('fill');
+		
+		songTitle.innerHTML = songs[currentSong];
+		
+		song.src = songs[currentSong];
+		
+		song.play();
+	}
+	
+	function playOrPauseSong(){
+		
+		if(song.paused){
+			song.play();
+			$("#play img").attr("src","../../../../pause1.png");
+		}
+		else{
+			song.pause();
+			$("#play img").attr("src","../../../../play1.png");
+		}
+	}
+	
+	song.addEventListener('ended', function(){
+		next();
+		$("#play img").attr("src","../../../../pause1.png");
+	});
+	
+	song.addEventListener('timeupdate',function(){ 
+		
+		var position = song.currentTime / song.duration;
+		
+		fill.style.width = position * 100 +'%';
+	});
+	
+
+	function next(){
+		
+		if(currentSong == songs.length-1){
+			currentSong = 0;
+		}
+		else{
+			currentSong++;
+		}
+		playSong();
+		$("#play img").attr("src","../../../../pause1.png");
+	}
+
+	function pre(){
+		
+		if(currentSong == 0){
+			currentSong = 15;
+		}
+		else{
+			currentSong--;
+		}
+		playSong();
+		$("#play img").attr("src","../../../../pause1.png");
+	}
+  </script>
+  
+</head>
+
+<body id="page-top">
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+    <a class="navbar-brand js-scroll-trigger" href="../../../../home.html#terbaru">
+      <span class="d-block d-lg-none">FREE MUSIC</span>
+	  <span class="d-none d-lg-block">
+        <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="../../../../img/profile.jpg" alt="">
+      </span>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	  <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="../../../../home.html#terbaru">Terbaru</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="#artis">Artis</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="#album">Album</a>
+        </li>
+		<li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="#video">Video</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="../../../../home.html#about">About</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  
+  <div class="container-fluid p-0">
+
+    <section class="FM-section p-3 p-lg-5 d-flex justify-content-center" id="artis">
+      <div class="w-100">
+        <h2 class="mb-5" align="center">ARTIS</h2>
+
+        <div class="FM-item d-flex flex-column flex-md-row justify-content-between mb-5">
+		  <div class="w-25">
+		  	<a href="../../Ed-Sheeran.html">
+		  	<h4 class="mb-0" align="center">Ed Sheeran</h4>
+			<span class="d-none d-lg-block" style="padding:10px">
+        	  <center><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="../../../../img/Artis/Ed-Sheeran/Profil.jpg" alt="Ed Sheeran"></center>
+      		</span>
+			</a>
+          </div>
+		  <div class="w-75 m-2">
+		  	<h5 class="m-3" align="left" style="font-size:24px">Details</h5>
+			<span class="d-none d-lg-block" style="padding:10px">
+			  	<p style="font-size:24px">Genres : Singer-Songwriter, Folk Pop, Pop, Pop Rock, Pop Rap<br>
+				  <a href="https://www.twitter.com/edsheeran">
+            		<i class="fab fa-twitter">@edsheeran</i>
+          		  </a>
+			  	</p>
+      		</span>
+          </div>
+        </div>
+		
+	  </div>
+	</section>
+		
+	<hr class="m-0">
+		
+	<section class="FM-section p-3 p-lg-5 d-flex align-items-center" id="album">
+      <div class="w-100">
+        <h2 class="mb-5" align="center">ALBUM</h2>
+
+        <div class="FM-item d-flex flex-column flex-md-row justify-content-between mb-5">
+          <div class="w-25">
+		  	<h4 class="mb-0" align="center">&divide;<br>(2017)</h4>
+			<span class="d-none d-lg-block" style="padding:10px">
+        	  <center><img class="img-fluid img-profile rounded mx-auto mb-2" src="../../../../img/Artis/Ed-Sheeran/Album/persen_(2017).jpg" alt="&divide; (2017)"></center>
+      		</span>
+          </div>
+		  <div class="w-75">
+			<h4 id="songTitle"align="center"></h4>
+			<div id="player">
+			  <div id="buttons">
+				<button id="pre" onClick="pre()"><img src="../../../../previous1.png" height="70%" width="70%"/></button>
+                <button id="play" onClick="playOrPauseSong()"><img src="../../../../pause1.png"/></button>
+				<button id="next" onClick="next()"><img src="../../../../next1.png" height="70%" width="70%"/></button>
+			  </div>
+				
+			  <div id="seek-bar">
+				<div id="fill"></div>
+				<div id="handle"></div>
+			  </div>  
+		    </div>
+		  </div>
+		</div>	
+		
+      </div>
+    </section>
+	
+	<hr class="m-0">
+		
+	<section class="FM-section p-3 p-lg-5 d-flex align-items-center" id="video">
+      <div class="w-100">
+        <h2 class="mb-5" align="center">VIDEO</h2>
+
+        <div class="FM-item d-flex flex-column flex-md-row justify-content-between mb-5">
+          <div class="w-100">
+		  	<div id="playList">
+			  <table>
+				<tr>
+				  <td>
+				  	<p style="font-size:20px; text-align:center; padding:0px">01. Eraser</p>
+				  	<iframe width="500" height="300" src="https://www.youtube.com/embed/OjGrcJ4lZCc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id="player"></iframe>
+				  </td>
+				  <td>
+				  	<p style="font-size:20px; text-align:center; padding:0px">02. Castle on the Hill</p>
+				  	<iframe width="500" height="300" src="https://www.youtube.com/embed/K0ibBPhiaG0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id="player"></iframe>
+				  </td>
+				</tr>
+
+				<tr>
+				  <td>
+				  	<p style="font-size:20px; text-align:center; padding:0px">03. Dive</p>
+				  	<iframe width="500" height="300" src="https://www.youtube.com/embed/Wv2rLZmbPMA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id="player"></iframe>
+				  </td>
+				  <td>
+				  	<p style="font-size:20px; text-align:center; padding:0px">04. Shape of You</p>
+				  	<iframe width="500" height="300" src="https://www.youtube.com/embed/JGwWNGJdvx8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id="player"></iframe>
+				  </td>
+				</tr>
+				
+				<tr>
+				  <td>
+				  	<p style="font-size:20px; text-align:center; padding:0px">05. Perfect</p>
+				  	<iframe width="500" height="300" src="https://www.youtube.com/embed/2Vv-BfVoq4g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id="player"></iframe>
+				  </td>
+				  <td>
+				  	<p style="font-size:20px; text-align:center; padding:0px">06. Galway Girl</p>
+				  	<iframe width="500" height="300" src="https://www.youtube.com/embed/87gWaABqGYs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id="player"></iframe>
+				  </td>
+				</tr>
+				
+				<tr>
+				  <td>
+				  	<p style="font-size:20px; text-align:center; padding:0px">07. Happier</p>
+				  	<iframe width="500" height="300" src="https://www.youtube.com/embed/iWZmdoY1aTE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id="player"></iframe>
+				  </td>
+				  <td>
+				  	<p style="font-size:20px; text-align:center; padding:0px">08. New Man</p>
+				  	<iframe width="500" height="300" src="https://www.youtube.com/embed/EwzD8U4u76k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id="player"></iframe>
+				  </td>
+				</tr>
+				
+				<tr>
+				  <td>
+				  	<p style="font-size:20px; text-align:center; padding:0px">09. Hearts Don't Break Around Here</p>
+				  	<iframe width="500" height="300" src="https://www.youtube.com/embed/20pAJPNaAyw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id="player"></iframe>
+				  </td>
+				  <td>
+				  	<p style="font-size:20px; text-align:center; padding:0px">10. What Do I Know</p>
+				  	<iframe width="500" height="300" src="https://www.youtube.com/embed/6B9J3lEyffA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id="player"></iframe>
+				  </td>
+				</tr>
+				
+				<tr>
+				  <td>
+				  	<p style="font-size:20px; text-align:center; padding:0px">11. How Would You Feel (Paean)</p>
+				  	<iframe width="500" height="300" src="https://www.youtube.com/embed/ZZMZiBCRX4c" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id="player"></iframe>
+				  </td>
+				  <td>
+				  	<p style="font-size:20px; text-align:center; padding:0px">12. Supermarket Flowers</p>
+				  	<iframe width="500" height="300" src="https://www.youtube.com/embed/EAGhzuitLXU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id="player"></iframe>
+				  </td>
+				</tr>
+				
+				<tr>
+				  <td>
+				  	<p style="font-size:20px; text-align:center; padding:0px">13. Barcelona</p>
+				  	<iframe width="500" height="300" src="https://www.youtube.com/embed/OVO4LhrOFiY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id="player"></iframe>
+				  </td>
+				  <td>
+				  	<p style="font-size:20px; text-align:center; padding:0px">14. Bibia Be Ye Ye</p>
+				  	<iframe width="500" height="300" src="https://www.youtube.com/embed/7t3Re2VIbHE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id="player"></iframe>
+				  </td>
+				</tr>
+				
+				<tr>
+				  <td>
+				  	<p style="font-size:20px; text-align:center; padding:0px">15. Nancy Mulligan</p>
+				  	<iframe width="500" height="300" src="https://www.youtube.com/embed/VFlZXlfda6Y" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id="player"></iframe>
+				  </td>
+				  <td>
+				  	<p style="font-size:20px; text-align:center; padding:0px">16. Save Myself</p>
+				  	<iframe width="500" height="300" src="https://www.youtube.com/embed/qXM0JdAwabU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id="player"></iframe>
+				  </td>
+				</tr>
+			  </table>
+
+			</div>
+		  </div>
+		</div>
+		
+		<div class="FM-item d-flex flex-column flex-md-row justify-content-between">
+		  <div class="d-flex justify-content-end w-100">
+		  	<a style="color:#2E67ED; font-size:16px" href="../../Ed-Sheeran.html#album">Kembali <-</a>
+		  </div>
+	  	</div>
+		
+	  </div>
+	</section>
+
+  </div>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="../../../../vendor/jquery/jquery.min.js"></script>
+  <script src="../../../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="../../../../vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="../../../../js/FM.min.js"></script>
+
+</body>
+
+</html>
